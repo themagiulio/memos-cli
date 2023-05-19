@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "memos-cli"
 version = "0.1.0"
-description = ""
+description = "A CLI frontend for memos self-hosted memo hub"
 authors = ["Giulio De Matteis <hello@giuliodematte.is>"]
 readme = "README.md"
 packages = [
