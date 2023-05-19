@@ -18,7 +18,7 @@ def new_command():
     content = ''
 
     with open(f_name, 'r', encoding='utf-8') as f_obj:
-        content = f_obj.read()
+        content = f_obj.read().rstrip()
 
     os.remove(f_name)
 
