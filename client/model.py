@@ -1,12 +1,14 @@
 from urllib.parse import urljoin
 from client.session import session
+from common.config import read_config
 
 
 class Model:
     path = None
 
     def __init__(self):
-        host = 'https://memos.giuliodematte.is/api/'
+        host = read_config('host')
+        host = urljoin(host, 'api/')
         self.path = urljoin(host, self.path)
 
 
