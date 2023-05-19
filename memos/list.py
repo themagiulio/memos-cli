@@ -5,13 +5,20 @@ from client.memo import Memo
 
 @click.command(name='list')
 @click.option('-p', '--public', is_flag=True, default=False, help='Show public memos')
-def list_command(public):
+@click.option('-t', '--tag', type=str, required=False, help='Filter by tag name')
+def list_command(public, tag=None):
     """Lists memos"""
     model = Memo()
+    query = ''
+    params = {}
+
     if public:
-        memos = model.get('all')
-    else:
-        memos = model.get('')
+        query = 'all'
+
+    if tag is not None:
+        params['tag'] = tag
+
+    memos = model.get(query, params)
     if memos is None:
         click.echo('Cannot fetch memos', err=True)
     else:
@@ -23,4 +30,7 @@ def list_command(public):
             content = ' '.join(content) + '...'
             t.add_row([memo['id'], memo['creatorName'], content])
 
-        print(t)
+        if len(memos) > 0:
+            click.echo(t)
+        else:
+            click.echo('Cannot find any memo')
