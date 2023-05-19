@@ -24,8 +24,12 @@ class Model:
         pass
 
 
-    def patch(self):
-        pass
+    def patch(self, item_id, body={}):
+        url = urljoin(self.path, item_id).strip('/')
+        r = session.patch(url, json=body)
+        if r.status_code == 200:
+            return True
+        return False
 
 
     def delete(self):
