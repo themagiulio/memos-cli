@@ -20,17 +20,21 @@ class Model:
         return None
 
 
-    def post(self):
-        pass
+    def post(self, body={}):
+        url = self.path.strip('/')
+        r = session.post(url, json=body)
+        if r.status_code == 200:
+            return r.json()['data']
+        return None
 
 
     def patch(self, item_id, body={}):
         url = urljoin(self.path, item_id).strip('/')
         r = session.patch(url, json=body)
-        if r.status_code == 200:
-            return True
-        return False
+        return r.status_code == 200
 
 
-    def delete(self):
-        pass
+    def delete(self, item__id):
+        url = urljoin(self.path, item__id).strip('/')
+        r = session.delete(url)
+        return r.status_code == 200
