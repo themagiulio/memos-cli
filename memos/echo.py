@@ -10,5 +10,4 @@ def echo_command(memo_id):
     if memo is None:
         click.echo(f'Cannot fetch memo with id {memo_id}', err=True)
         return
-    
     click.echo(memo['content'])

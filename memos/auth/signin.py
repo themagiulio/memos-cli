@@ -9,7 +9,7 @@ def signin_command():
     username = click.prompt('Username')
     password = click.prompt('Password', hide_input=True)
     user = signin(host, username, password)
-    if user is not None:
-        click.echo(f'Welcome {username}!')
-    else:
+    if user is None:
         click.echo('Invalid username or password')
+        return
+    click.echo(f'Welcome {username}!')
