@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "memos-cli"
+version = "0.1.0"
+description = ""
+authors = ["Giulio De Matteis <hello@giuliodematte.is>"]
+readme = "README.md"
+packages = [{include = "memos"}, {include = "client"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+click = "^8.1.3"
+requests = "^2.30.0"
+click-aliases = "^1.0.1"
+
+[tool.poetry.scripts]
+memos = "memos.cli:cli"
+
+[tool.poetry.group.dev.dependencies]
+pylint = "^2.17.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
