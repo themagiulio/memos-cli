@@ -4,7 +4,11 @@ version = "0.1.0"
 description = ""
 authors = ["Giulio De Matteis <hello@giuliodematte.is>"]
 readme = "README.md"
-packages = [{include = "memos"}, {include = "client"}]
+packages = [
+  {include = "memos"},
+  {include = "client"},
+  {include = "common"}
+]
 
 [tool.poetry.dependencies]
 python = "^3.11"
