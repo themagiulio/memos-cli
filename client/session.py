@@ -14,11 +14,12 @@ def create_session():
     refresh_token = read_config('refresh-token')
 
     if access_token is not None and refresh_token is not None:
-        cj = CookieJar()
-        s.cookies = requests.utils.add_dict_to_cookiejar(cj, {
+        cookies = requests.utils.cookiejar_from_dict({
             'access-token': access_token,
-            'refresh-token': refresh_token
+            'refresh-token': refresh_token,
+            '_csrf': ''
         })
+        s.cookies.update(cookies)
 
     return s
 
