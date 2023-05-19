@@ -28,7 +28,7 @@ def edit_command(memo_id):
     updated_content = content
 
     with open(f_name, 'r', encoding='utf-8') as f_obj:
-        updated_content = f_obj.read()
+        updated_content = f_obj.read().rstrip()
 
     os.remove(f_name)
 
