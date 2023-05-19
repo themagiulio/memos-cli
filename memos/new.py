@@ -1,7 +1,33 @@
+import os
+import tempfile
+from io import FileIO
+from subprocess import call
 import click
+from client.memo import Memo
 
 
 @click.command(name='new')
 def new_command():
     """Create a new memo"""
-    pass
+    f_hnd, f_name = tempfile.mkstemp(suffix='.memos.tmp')
+    f_obj = FileIO(f_hnd, 'w')
+    f_obj.close()
+
+    call(f'vi {f_name}'.split(' ')) 
+
+    content = ''
+
+    with open(f_name, 'r', encoding='utf-8') as f_obj:
+        content = f_obj.read()
+
+    os.remove(f_name)
+
+    memo = Memo().post({'content': content})
+
+    if memo is None:
+        click.echo('Cannot create memo', err=True)
+        return
+
+    memo_id = memo['id']
+
+    click.echo(f'Created memo with id {memo_id}')
