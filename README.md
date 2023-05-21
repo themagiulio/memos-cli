@@ -34,6 +34,12 @@ $ pip install memos-cli
 
 Run `memos --help` to see all available commands.
 
+## Configuration
+
+All configs are stored in `$HOME/.memos.json`.
+
+- `text-editor`: the text editor used to visualize and edit memos. If it is not specified `vi` will be used.
+
 ## License
 
 This project is made available under the GNU General Public License v3.
