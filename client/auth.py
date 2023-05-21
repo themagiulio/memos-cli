@@ -1,8 +1,5 @@
 from urllib.parse import urlparse
-import pickle
-from requests.utils import dict_from_cookiejar
 from client.session import session
-from client.memo import Memo
 from common.config import read_config, write_config
 
 
@@ -13,16 +10,12 @@ def signin(host, username, password):
     domain = domain.replace('/', '')
     url = host.scheme + '://' + domain + '/api/auth/signin'
     r = session.post(url, json={'username': username, 'password': password})
-    Memo().get('all')
 
     if r.status_code == 200:
-        cookies = dict_from_cookiejar(r.cookies)
-        for key, value in cookies.items():
-            write_config(key, value)
-
+        user = r.json()['data']
+        write_config('openId', user['openId'])
         write_config('host', host.scheme + '://' + domain)
-
-        return r.json()['data']
+        return user
 
     return None
 
