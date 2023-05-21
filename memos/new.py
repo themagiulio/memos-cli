@@ -4,6 +4,7 @@ from io import FileIO
 from subprocess import call
 import click
 from client.memo import Memo
+from common.config import read_config
 
 
 @click.command(name='new')
@@ -13,7 +14,9 @@ def new_command():
     f_obj = FileIO(f_hnd, 'w')
     f_obj.close()
 
-    call(f'vi {f_name}'.split(' ')) 
+    editor = read_config('text-editor') or 'vi'
+
+    call(f'{editor} {f_name}'.split(' ')) 
 
     content = ''
 

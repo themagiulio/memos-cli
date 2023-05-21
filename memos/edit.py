@@ -4,6 +4,7 @@ from subprocess import call
 from io import FileIO
 import click
 from client.memo import Memo
+from common.config import read_config
 
 
 @click.command(name='edit')
@@ -23,7 +24,9 @@ def edit_command(memo_id):
     f_obj.write(bytes(content, encoding='utf-8'))
     f_obj.close()
 
-    call(f'vi {f_name}'.split(' ')) 
+    editor = read_config('text-editor') or 'vi'
+
+    call(f'{editor} {f_name}'.split(' ')) 
 
     updated_content = content
 
