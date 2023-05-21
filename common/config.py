@@ -7,13 +7,11 @@ def read_config(key=None):
         content = f_obj.read()
         if content != '':
             config = json.loads(content)
-        elif key is None:
-            return {}
         else:
-            return None
+            config = {}
     if key is None:
         return config
-    return config[key]
+    return config.get(key, None)
 
 
 
