@@ -9,7 +9,7 @@ from common.config import read_config
 
 @click.command(name='new')
 def new_command():
-    """Create a new memo"""
+    """Creates a new memo"""
     f_hnd, f_name = tempfile.mkstemp(suffix='.memos.tmp')
     f_obj = FileIO(f_hnd, 'w')
     f_obj.close()

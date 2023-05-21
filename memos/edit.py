@@ -10,7 +10,7 @@ from common.config import read_config
 @click.command(name='edit')
 @click.argument('memo_id')
 def edit_command(memo_id):
-    """Edit a memo"""
+    """Edits a memo"""
     memo = Memo().get(memo_id)
 
     if memo is None:
