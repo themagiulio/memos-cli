@@ -1,6 +1,6 @@
 import click
-from click_aliases import ClickAliasedGroup
 from memos import __VERSION__
+from memos.click_aliases import ClickAliasedGroup
 from memos.auth import auth_command
 from memos.echo import echo_command
 from memos.edit import edit_command
@@ -22,9 +22,9 @@ def version_command():
 cli.add_command(auth_command)
 cli.add_command(echo_command)
 cli.add_command(edit_command)
-cli.add_command(list_command)
+cli.add_command(list_command, aliases=['ls'])
 cli.add_command(new_command)
-cli.add_command(remove_command)
+cli.add_command(remove_command, aliases=['rm', 'delete', 'del'])
 cli.add_command(version_command)
 
 if __name__ == '__main__':

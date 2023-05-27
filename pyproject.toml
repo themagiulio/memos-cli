@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "memos-cli"
-version = "0.1.0"
+version = "0.1.1"
 description = "A CLI frontend for memos self-hosted memo hub"
 authors = ["Giulio De Matteis <hello@giuliodematte.is>"]
 readme = "README.md"
@@ -14,7 +14,6 @@ packages = [
 python = "^3.11"
 click = "^8.1.3"
 requests = "^2.30.0"
-click-aliases = "^1.0.1"
 prettytable = "^3.7.0"
 
 [tool.poetry.scripts]
