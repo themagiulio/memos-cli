@@ -1,5 +1,9 @@
 # Memos CLI
 
+## NO LONGER MAINTAINED
+
+THIS PROJECT IS DEPRECATED
+
 *To use this cli, you must have a self-hosted [✍️memos](https://github.com/usememos/memos) server set up and running.*
 
 ## About
